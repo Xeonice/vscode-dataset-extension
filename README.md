@@ -16,6 +16,9 @@ This is the README for your extension "c7n-dataset-plugin". After writing up a b
 | `field-new`                  | 新建一个 field 字段                                                    |
 | `queryField-new`             | 新建一个 queryField 字段                                               |
 
+除这几个特殊指令外，其余的所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/components-pro/data-set-cn/#DataToJSON)
+
+
 ## Extension Settings
 
 代码片段位于 `snippets/javascript.json` 下，需要提交 `pull-request` 的人员可以对该文件进行修改。
