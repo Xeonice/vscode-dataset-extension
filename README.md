@@ -16,6 +16,8 @@
 | `field-new`                  | 新建一个 field 字段                                                    |
 | `queryField-new`             | 新建一个 queryField 字段                                               |
 
+`transport` 部分，因为存在两套参数，因此被分成了 `axios` 和 `func` 部分。例如 `read` => `read-axios` / `read-func`。
+
 除这几个特殊指令外，其余的所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/components-pro/data-set-cn/#DataToJSON)
 
 
