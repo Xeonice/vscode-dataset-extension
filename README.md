@@ -1,6 +1,6 @@
-# c7n-dataset-plugin README
+# c7n-dataset-plugin
 
-This is the README for your extension "c7n-dataset-plugin". After writing up a brief description, we recommend including the following sections.
+针对 choerodon-ui/pro DataSet 定制的代码补全插件，其最终目标是省去你查阅文档的时间。
 
 ## Features
 
