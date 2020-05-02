@@ -4,7 +4,17 @@ This is the README for your extension "c7n-dataset-plugin". After writing up a b
 
 ## Features
 
-一套针对 DataSet 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
+一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
+
+### JavaScript DataSet Snippets
+
+| Snippet                      | Purpose                                                              |
+| ---------------------------- | -------------------------------------------------------------------- |
+| `ds-import`                  | 导入 DataSet 方法                                                     |
+| `ds-new`                     | 新建 DataSet                                                          |
+| `ds-init`                    | 初始化一个 DataSet                                                     |
+| `field-new`                  | 新建一个 field 字段                                                    |
+| `queryField-new`             | 新建一个 queryField 字段                                               |
 
 ## Extension Settings
 

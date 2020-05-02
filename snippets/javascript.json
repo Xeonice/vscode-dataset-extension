@@ -1,13 +1,4 @@
 {
-  "for循环": {
-    "prefix": "for",
-    "body": [
-      "for (const ${2:item} of ${1:array}) {",
-      "\t$0",
-      "}"
-    ],
-    "description": "for循环"
-  },
   "DataSet-import": {
     "prefix": "ds-import",
     "body": [
@@ -28,181 +19,370 @@
       "{",
       "\tautoQuery: ${1|true,false|},",
       "\tautoCreate: ${2|true,false|},  ",
-      "\tselection: '${3|'single','multiple',false}',",
+      "\tselection: ${3|'single','multiple',false|},",
       "\tpaging: ${4|false,true|},",
-      "\tpageSize: ${5},",
-      "\tfields: [",
+      "\tpageSize: ${5:10},",
+      "\tqueryFields: [",
       "\t\t$6",
+      "\t]",
+      "\tfields: [",
+      "\t\t$7",
       "\t],",
       "\ttransport: {",
-      "\t\t$7",
+      "\t\t$8",
       "\t},",
       "\tevents: {",
-      "\t\t$0",
-      "\t}",
+      "\t\t$9",
+      "\t}$0",
       "}"
     ],
     "description": "初始化 DataSet 结构"
   },
-  "DataSet-transport-create-obj": {
-    "prefix": "transport-create-axios",
+  "DataSet-data": {
+    "prefix": "data",
+    "body": [
+      "data: [$1]"
+    ],
+    "description": "dataSetPorps: data - 初始化数据"
+  },
+  "DataSet-autoQueryAfterSubmit": {
+    "prefix": "autoQueryAfterSubmit",
+    "body": [
+      "autoQueryAfterSubmit: ${1|true,false|}"
+    ],
+    "description": "dataSetPorps: autoQueryAfterSubmit - 提交成功后响应的数据不符合回写条件时自动查询。注：回写条件是指响应数据中含有提交时的数据时，数据将按数据状态分组进行顺序回写，如果要更准确的回写，响应数据要含有提交时的__id 字段值。"
+  },
+  "DataSet-autoLocateFirst": {
+    "prefix": "autoLocateFirst",
+    "body": [
+      "autoLocateFirst: ${1|true,false|}"
+    ],
+    "description": "dataSetPorps: autoLocateFirst - 数据加载后自动定位到第一条记录"
+  },
+  "DataSet-autoLocateAfterCreate": {
+    "prefix": "autoLocateAfterCreate",
+    "body": [
+      "autoLocateAfterCreate: ${1|true,false|}"
+    ],
+    "description": "dataSetPorps: autoLocateAfterCreate - 自动定位到新建记录"
+  },
+  "DataSet-autoLocateAfterRemove": {
+    "prefix": "autoLocateAfterRemove",
+    "body": [
+      "autoLocateAfterRemove: ${1|true,false|}"
+    ],
+    "description": "dataSetPorps: autoLocateAfterRemove - 当前数据被删除后自动定位到其他记录"
+  },
+  "DataSet-modifiedCheck": {
+    "prefix": "modifiedCheck",
+    "body": [
+      "modifiedCheck: ${1|true,false|}"
+    ],
+    "description": "dataSetPorps: modifiedCheck - 查询前，当有记录更改过时，是否警告提示。"
+  },
+  "DataSet-dataKey": {
+    "prefix": "dataKey",
+    "body": [
+      "dataKey: ${1|'rows',null|}"
+    ],
+    "description": "dataSetPorps: dataKey - 查询返回的 json 中对应的数据的 key, 当为 null 时对应整个 json 数据, json 不是数组时自动作为新数组的第一条数据"
+  },
+  "DataSet-totelKey": {
+    "prefix": "totalKey",
+    "body": [
+      "totalKey: '${1:totel}'"
+    ],
+    "description": "dataSetPorps: totalKey - 查询返回的 json 中对应的总数的 key"
+  },
+  "DataSet-queryDataSet": {
+    "prefix": "queryDataSet",
+    "body": [
+      "queryDataSet: {${1}}"
+    ],
+    "description": "dataSetPorps: queryDataSet - 查询条件数据源"
+  },
+  "DataSet-queryUrl": {
+    "prefix": "queryUrl",
+    "body": [
+      "queryUrl: '${1}'"
+    ],
+    "description": "dataSetPorps: queryUrl - 查询请求的 url。 当设定 name 时，默认 /dataset/{name}/queries"
+  },
+  "DataSet-queryParameter": {
+    "prefix": "queryParameter",
+    "body": [
+      "queryParameter: {${1}}"
+    ],
+    "description": "dataSetPorps: queryParameter - 查询请求的初始参数"
+  },
+  "DataSet-submitUrl": {
+    "prefix": "submitUrl",
+    "body": [
+      "submitUrl: '${1}'"
+    ],
+    "description": "dataSetPorps: submitUrl - 记录提交请求的 url。 当设定 name 时，默认 /dataset/{name}/mutations"
+  },
+  "DataSet-tlsUrl": {
+    "prefix": "tlsUrl",
+    "body": [
+      "tlsUrl: '${1}'"
+    ],
+    "description": "dataSetPorps: tlsUrl - 多语言查询请求的 url。 当设定 name 时， 默认 /dataset/{name}/languages"
+  },
+  "DataSet-validateUrl": {
+    "prefix": "validateUrl",
+    "body": [
+      "validateUrl: '${1}'"
+    ],
+    "description": "dataSetPorps: validateUrl - 远程校验查询请求的 url。 当设定 name 时， 默认 /dataset/{name}/validate"
+  },
+  "DataSet-exportUrl": {
+    "prefix": "exportUrl",
+    "body": [
+      "exportUrl: '${1}'"
+    ],
+    "description": "dataSetPorps: exportUrl - 导出请求的 url。 当设定 name 时， 默认 /dataset/{name}/export"
+  },
+  "DataSet-children": {
+    "prefix": "children",
+    "body": [
+      "children: '${1}'"
+    ],
+    "description": "dataSetPorps: children - 级联行数据集, 例： { name_1: dataSet1, name_2: dataSet2 }"
+  },
+  "DataSet-primaryKey": {
+    "prefix": "primaryKey",
+    "body": [
+      "primaryKey: '${1}'"
+    ],
+    "description": "dataSetPorps: primaryKey - 主键字段名，一般用作级联行表的查询字段"
+  },
+  "DataSet-idField": {
+    "prefix": "idField",
+    "body": [
+      "idField: '${1}'"
+    ],
+    "description": "dataSetPorps: idField - 树形数据当前节点 id 字段名"
+  },
+  "DataSet-parentField": {
+    "prefix": "parentField",
+    "body": [
+      "parentField: '${1}'"
+    ],
+    "description": "dataSetPorps: parentField - 树形数据当前父节点 id 字段名"
+  },
+  "DataSet-expandField": {
+    "prefix": "expandField",
+    "body": [
+      "expandField: '${1}'"
+    ],
+    "description": "dataSetPorps: expandField - 树形数据标记节点是否展开的字段名"
+  },
+  "DataSet-checkField": {
+    "prefix": "checkField",
+    "body": [
+      "checkField: '${1}'"
+    ],
+    "description": "dataSetPorps: checkField - 树形数据标记节点是否为选中的字段名，在展开按钮后面会显示 checkbox"
+  },
+  "DataSet-cacheSelection": {
+    "prefix": "cacheSelection",
+    "body": [
+      "cacheSelection: ${1|false,true|}"
+    ],
+    "description": "dataSetPorps: cacheSelection - 缓存选中记录，使切换分页时仍保留选中状态。当设置了 primaryKey 或有字段设置了 unique 才起作用"
+  },
+  "DataSet-axios": {
+    "prefix": "axiosInstanse",
+    "body": [
+      "axios: $1"
+    ],
+    "description": "dataSetPorps: axios - 覆盖默认 axios"
+  },
+  "DataSet-dataToJSON": {
+    "prefix": "dataToJSON",
+    "body": [
+      "dataToJSON: '${1|dirty,selected,all,normal,dirty-self,selected-self,all-self,normal-self|}'"
+    ],
+    "description": "dataSetPorps: dataToJSON - 数据转为 json 的方式，详见DataToJSON"
+  },
+  "DataSet-cascadeParams": {
+    "prefix": "cascadeParams",
+    "body": [
+      "cascaseParams: (record, primaryKey) => { return {$1} }"
+    ],
+    "description": "dataSetPorps: cascadeParams - 级联查询参数"
+  },
+  "DataSet-create-obj": {
+    "prefix": "create-axios",
     "body": [
       "create: {",
       "\turl: '${1}', ",
       "\tmethod: '${2:post}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-create - 新建请求的 axios 配置或 url 字符串 - 返回 axios 对象"
+    "description": "Transport: create - 新建请求的 axios 配置或 url 字符串 - 返回 axios 对象"
   },
-  "DataSet-transport-create-func": {
-    "prefix": "transport-create-func",
+  "DataSet-create-func": {
+    "prefix": "create-func",
     "body": [
       "create: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:post}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-create - 新建请求的 axios 配置或 url 字符串 - 返回函数"
+    "description": "Transport: create - 新建请求的 axios 配置或 url 字符串 - 返回函数"
   },
-  "DataSet-transport-read-obj": {
-    "prefix": "transport-read-axios",
+  "DataSet-read-obj": {
+    "prefix": "read-axios",
     "body": [
       "read: {",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-read - 查询请求的 axios 配置或 url 字符串 - 返回 axios 对象"
+    "description": "Transport: read - 查询请求的 axios 配置或 url 字符串 - 返回 axios 对象"
   },
-  "DataSet-transport-read-func": {
-    "prefix": "transport-read-func",
+  "DataSet-read-func": {
+    "prefix": "read-func",
     "body": [
       "read: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-read - 查询请求的 axios 配置或 url 字符串 - 返回函数"
+    "description": "Transport: read - 查询请求的 axios 配置或 url 字符串 - 返回函数"
   },
-  "DataSet-transport-update-obj": {
-    "prefix": "transport-update-axios",
+  "DataSet-update-obj": {
+    "prefix": "update-axios",
     "body": [
       "update: {",
       "\turl: '${1}',",
       "\tmethod: '${2:put}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-update - 更新请求的 axios 配置或 url 字符串 - 返回 axios 对象"
+    "description": "Transport: update - 更新请求的 axios 配置或 url 字符串 - 返回 axios 对象"
   },
-  "DataSet-transport-update-func": {
-    "prefix": "transport-update-func",
+  "DataSet-update-func": {
+    "prefix": "update-func",
     "body": [
       "update: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:put}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-update - 更新请求的 axios 配置或 url 字符串 - 返回函数"
+    "description": "Transport: update - 更新请求的 axios 配置或 url 字符串 - 返回函数"
   },
-  "DataSet-transport-destory-obj": {
-    "prefix": "transport-destory-axios",
+  "DataSet-destory-obj": {
+    "prefix": "destory-axios",
     "body": [
       "destory: {",
       "\turl: '${1}',",
       "\tmethod: '${2:delete}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-destory - 删除请求的 axios 配置或 url 字符串 - 返回 axios 对象"
+    "description": "Transport: destory - 删除请求的 axios 配置或 url 字符串 - 返回 axios 对象"
   },
-  "DataSet-transport-destory-func": {
-    "prefix": "transport-destory-func",
+  "DataSet-destory-func": {
+    "prefix": "destory-func",
     "body": [
       "destory: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:delete}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-destory - 删除请求的 axios 配置或 url 字符串 - 返回函数"
+    "description": "Transport: destory - 删除请求的 axios 配置或 url 字符串 - 返回函数"
   },
-  "DataSet-transport-validate-obj": {
-    "prefix": "transport-validate-axios",
+  "DataSet-validate-obj": {
+    "prefix": "validate-axios",
     "body": [
       "validate: {",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回 axios 对象"
+    "description": "Transport: validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回 axios 对象"
   },
-  "DataSet-transport-validate-func": {
-    "prefix": "transport-validate-func",
+  "DataSet-validate-func": {
+    "prefix": "validate-func",
     "body": [
       "validate: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回函数"
+    "description": "Transport: validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回函数"
   },
-  "DataSet-transport-submit-obj": {
-    "prefix": "transport-submit-axios",
+  "DataSet-submit-obj": {
+    "prefix": "submit-axios",
     "body": [
       "submit: {",
       "\turl: '${1}',",
       "\tmethod: '${2:post}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-submit - create, update, destroy 的默认配置或 url 字符串。 - 返回 axios 对象"
+    "description": "Transport: submit - create, update, destroy 的默认配置或 url 字符串。 - 返回 axios 对象"
   },
-  "DataSet-transport-submit-func": {
-    "prefix": "transport-submit-func",
+  "DataSet-submit-func": {
+    "prefix": "submit-func",
     "body": [
       "submit: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:post}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-submit - create, update, destroy 的默认配置或 url 字符串。 - 返回函数"
+    "description": "Transport: submit - create, update, destroy 的默认配置或 url 字符串。 - 返回函数"
   },
-  "DataSet-transport-tls-obj": {
-    "prefix": "transport-tls-axios",
+  "DataSet-tls-obj": {
+    "prefix": "tls-axios",
     "body": [
       "tls: {",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回 axios 对象"
+    "description": "Transport: tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回 axios 对象"
   },
-  "DataSet-transport-tls-func": {
-    "prefix": "transport-tls-func",
+  "DataSet-tls-func": {
+    "prefix": "tls-func",
     "body": [
       "tls: ({ data, params, dataSet, record, name }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:get}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回函数"
+    "description": "Transport: tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回函数"
   },
-  "DataSet-transport-exports-obj": {
-    "prefix": "transport-exports-axios",
+  "DataSet-exports-obj": {
+    "prefix": "exports-axios",
     "body": [
       "exports: {",
       "\turl: '${1}',",
       "\tmethod: '${2:post}'",
-      "}"
+      "}$0"
     ],
-    "description": "transport-exports - 导出的配置或 url 字符串 - 返回 axios 对象"
+    "description": "Transport: exports - 导出的配置或 url 字符串 - 返回 axios 对象"
   },
-  "DataSet-transport-exports-func": {
-    "prefix": "transport-exports-func",
+  "DataSet-exports-func": {
+    "prefix": "exports-func",
     "body": [
       "exports: ({ data, params, dataSet }) => ({",
       "\turl: '${1}',",
       "\tmethod: '${2:post}'",
-      "})"
+      "})$0"
     ],
-    "description": "transport-exports - 导出的配置或 url 字符串 - 返回函数"
+    "description": "Transport: exports - 导出的配置或 url 字符串 - 返回函数"
+  },
+  "DataSet-queryField-init": {
+    "prefix": "queryField-new",
+    "body": [
+      "{", 
+      "\tname: '${1}',", 
+      "\ttype: '${2|boolean,number,string,date,dateTime,time,week,month,year,email,url,intl,object|}',",  
+      "\tlabel: '${3}',",
+      "}$0"
+    ],
+    "description": "新建一条 queryField"
   },
   "DataSet-field-init": {
     "prefix": "field-new",
@@ -211,199 +391,458 @@
       "\tname: '${1}',", 
       "\ttype: '${2|boolean,number,string,date,dateTime,time,week,month,year,email,url,intl,object|}',",  
       "\tlabel: '${3}',",
-      "\ttextField: '${4}',",
-      "\tvalueField: '${5}',",
-      "\tdefaultValue: '${6}',",
-      "\tdynamicProps: ({ dataSet, record, name}) => {",
-      "\t\treturn $0;",
-      "\t}",
-      "}"
+      "}$0"
     ],
     "description": "新建一条 field"
+  },
+  "DataSet-field-order": {
+    "prefix": "order",
+    "body": [
+      "order: ${1|'asc','desc'|}"
+    ],
+    "description": "Field Props: order - 排序类型，只支持单 field 排序， 如果多个 field 设置了 order，取第一个有 order 的 field，可选值：asc desc"
+  },
+  "DataSet-field-labelWidth": {
+    "prefix": "labelWidth",
+    "body": [
+      "labelWidth: ${1:80}"
+    ],
+    "description": "Field Props: labelWidth - 字段标签宽度"
+  },
+  "DataSet-field-format": {
+    "prefix": "format",
+    "body": [
+      "format: ${1|'uppercase','lowercase','capitalize'}"
+    ],
+    "description": "Field Props: format - 字符串类型和日期类型字段值格式化。 字符串类型格式化可选值：'uppercase' 'lowercase' 'capitalize'"
+  },
+  "DataSet-field-pattern": {
+    "prefix": "pattern",
+    "body": [
+      "pattern: ${1|'',//|}"
+    ],
+    "description": "Field Props: pattern - 正则校验"
+  },
+  "DataSet-field-maxLength": {
+    "prefix": "maxLength",
+    "body": [
+      "maxLength： ${1:64}"
+    ],
+    "description": "Field Props: maxLength - 最大长度"
+  },
+  "DataSet-field-minLength": {
+    "prefix": "minLength",
+    "body": [
+      "minLength: ${1:64}"
+    ],
+    "description": "Field Props: minLength - 最小长度"
+  },
+  "DataSet-field-max": {
+    "prefix": "max",
+    "body": [
+      "max: ${1|64,''|}"
+    ],
+    "description": "Field Props: max - 最大值。 fieldName 指向当前记录的 fieldName 值作为最大值。"
+  },
+  "DataSet-field-min": {
+    "prefix": "min",
+    "body": [
+      "min: ${1|64,''|}"
+    ],
+    "description": "Field Props: min - 最小值。 fieldName 指向当前记录的 fieldName 值作为最小值。"
+  },
+  "DataSet-field-step": {
+    "prefix": "step",
+    "body": [
+      "step: ${1|1, { hour: 1\\, minute: 1\\, second: 1 }|}"
+    ],
+    "description": "Field Props: step - 步距"
+  },
+  "DataSet-field-validator": {
+    "prefix": "validator",
+    "body": [
+      "validator: (value, name, record) => {",
+      "\treturn ${1};",
+      "}"
+    ],
+    "description": "Field Props: validator - 校验器，当返回值为 false 或 涵盖错误信息的字符串，则为校验失败"
+  },
+  "DataSet-field-required": {
+    "prefix": "required",
+    "body": [
+      "required: ${1|true,false|}"
+    ],
+    "description": "Field Props: required - 是否必选"
+  },
+  "DataSet-field-readOnly": {
+    "prefix": "readOnly",
+    "body": [
+      "readOnly: ${1|true,false|}"
+    ],
+    "description": "Field Props: readOnly - 是否只读"
+  },
+  "DataSet-field-disabled": {
+    "prefix": "disabled",
+    "body": [
+      "disabled: ${1|true,false}"
+    ],
+    "description": "Field Props: disabled - 是否禁用"
+  },
+  "DataSet-field-textField": {
+    "prefix": "textField",
+    "body": [
+      "textField: '${1:meaning}'$0"
+    ],
+    "description": "Field Props: textField - 值列表的文本字段"
+  },
+  "DataSet-field-valueField": {
+    "prefix": "valueField",
+    "body": [
+      "valueField: '${1:value}'$0"
+    ],
+    "description": "Field Props: valueField - 值列表的值字段"
+  },
+  "DataSet-field-trueValue": {
+    "prefix": "trueValue",
+    "body": [
+      "trueValue: ${1:true}"
+    ],
+    "description": "Field Props: trueValue - 类型为 boolean 时，true 对应的值"
+  },
+  "DataSet-field-falseValue": {
+    "prefix": "falseValue",
+    "body": [
+      "falseValue: ${1:false}"
+    ],
+    "description": "Field Props: falseValue - 类型为 boolean 时，false 对应的值"
+  },
+  "DataSet-field-options": {
+    "prefix": "options",
+    "body": [
+      "options: ${1}$0"
+    ],
+    "description": "Field Props: options - 下拉框组件的菜单数据集"
+  },
+  "DataSet-field-defaultValue": {
+    "prefix": "defaultValue",
+    "body": [
+      "defaultValue: ${1}"
+    ],
+    "description": "Field Props: defaultValue - 默认值"
+  },
+  "DataSet-field-multiple": {
+    "prefix": "multiple",
+    "body": [
+      "multiple: ${1|true,false,''|}"
+    ],
+    "description": "Field Props: multiple - 是否为值数组。 当为字符串时，作为数据分隔符，查询时会将字符串分割成数组，提交时会将数组拼接成字符串"
+  },
+  "DataSet-field-range": {
+    "prefix": "range",
+    "body": [
+      "range: ${1|false,true,[''\\,'']|}"
+    ],
+    "description": "Field Props: range - 是否为范围值。 当为 true 时，则值为[startValue, endValue]；当为数组时，例如['start', 'end']时，则值为{ start: startValue, end: endValue }"
+  },
+  "DataSet-field-unique": {
+    "prefix": "unique",
+    "body": [
+      "unique: ${1|false,true,''|}"
+    ],
+    "description": "Field Props: unique - 唯一索引或联合唯一索引组名。multiple 和 range 字段不适用。当 column 的 editor 设为 true 时，编辑器只会在新增的记录显示，如果要对已有数据进行编辑，请自定义 editor"
+  },
+  "DataSet-field-lovCode": {
+    "prefix": "lovCode",
+    "body": [
+      "lovCode: '${1}'"
+    ],
+    "description": "Field Props: lovCode - LOV 配置代码"
+  },
+  "DataSet-field-lovPara": {
+    "prefix": "lovPara",
+    "body": [
+      "lovPara: {${1}}"
+    ],
+    "description": "Field Props: lovPara - LOV 或 Lookup 查询参数对象"
   },
   "DataSet-field-lookupCode": {
     "prefix": "lookupCode",
     "body": [
-      "lookupCode： ${0}"
+      "lookupCode: '${1}'"
     ],
-    "description": "lookupCode - 值列表代码"
+    "description": "Field Props: lookupCode - 值列表代码"
   },
   "DataSet-field-lookupUrl": {
-    "prefix": "",
+    "prefix": "lookupUrl",
     "body": [
-      "lookupUrl: ${0}"
+      "lookupUrl: ${1|'',(code) => { return ''; }|}"
     ],
-    "description": "lookupUrl - 值列表请求地址"
+    "description": "Field Props: lookupUrl - 值列表请求地址"
+  },
+  "DataSet-field-lovDefineUrl": {
+    "prefix": "lovDefineUrl",
+    "body": [
+      "lovDefineUrl: ${1|'',(code) => { return ''; }|}"
+    ],
+    "description": "Field Props: lovDefineUrl - lov 配置请求地址"
+  },
+  "DataSet-field-lovQueryUrl": {
+    "prefix": "lovQueryUrl",
+    "body": [
+      "lovQueryUrl: ${1|'',(code\\, config\\, { dataSet\\, params\\, data }) => { return ''; }|}"
+    ],
+    "description": "Field Props: lovQueryUrl - lov 查询请求地址"
+  },
+  "DataSet-field-lookupAxiosConfig": {
+    "prefix": "lookupAxiosConfig",
+    "body": [
+      "lookupAxiosConfig: ${1|{ url: ''\\, method: '' },({ dataSet\\, record\\, params\\, lookupCode }) => { return {} }|}"
+    ],
+    "description": "Field Props: lookupAxiosConfig - 值列表请求配置或返回配置的钩子，详见AxiosRequestConfig。配置中默认 url 为 lookupUrl， method 为 post。"
+  },
+  "DataSet-field-lovDefineAxiosConfig": {
+    "prefix": "lovDefineAxiosConfig",
+    "body": [
+      "lovDefineAxiosConfig: ${1|{ url: ''\\, method: '' },(code) => { return {} }|}"
+    ],
+    "description": "Field Props: lovDefineAxiosConfig - lov 配置的请求配置或返回配置的钩子，详见AxiosRequestConfig。 配置中默认 url 为 lovDefineUrl， method 为 post。"
+  },
+  "DataSet-field-lovQueryAxiosConfig": {
+    "prefix": "lovQueryAxiosConfig",
+    "body": [
+      "lovQueryAxiosConfig: ${1|'',(code, config, { dataSet\\, params\\, data }) => { return {} }|}"
+    ],
+    "description": "Field Props: lovQueryAxiosConfig - lov 查询的请求配置或返回配置的钩子，详见AxiosRequestConfig。 配置中默认 url 为 lovQueryUrl， method 为 post。"
+  },
+  "DataSet-field-bind": {
+    "prefix": "bind",
+    "body": [
+      "bind: '${1}'"
+    ],
+    "description": "Field Props: bind - 内部字段别名绑定"
+  },
+  "DataSet-field-dynamicProps": {
+    "prefix": "dynamicProps",
+    "body": [
+      "dynamicProps: {",
+      "\t${1:name}({ dataSet, record, name }) {",
+      "\t\treturn ${2}",
+      "\t}",
+      "}$0"
+    ],
+    "description": "Field Props: dynamicProps - 动态属性对象。对象为字段属性和返回该字段值的钩子的键值对。原对象属性钩子将在 v1.0 版本中废弃。"
+  },
+  "DataSet-field-cascadeMap": {
+    "prefix": "cascadeMap",
+    "body": [
+      "cascadeMap: {${1}}"
+    ],
+    "description": "Field Props: cascadeMap - 快码和 LOV 查询时的级联参数映射。 例如：cascadeMap: { parentCodeValue: 'city' }，其中'city'是当前所在数据源的其他字段名，parentCodeValue 是快码和 LOV 的查询参数"
+  },
+  "DataSet-field-currency": {
+    "prefix": "currency",
+    "body": [
+      "currency: '${1|USD,CNY,JPY|}'"
+    ],
+    "description": "Field Props: currency - 货币代码，详见Current currency & funds code list."
+  },
+  "DataSet-field-ignore": {
+    "prefix": "ignore",
+    "body": [
+      "ignore: '${1|always,clean,never|}'"
+    ],
+    "description": "Field Props: ignore - 忽略提交, 可选值: always - 总是忽略 clean - 值未变化时忽略 never - 从不忽略"
+  },
+  "DataSet-field-transformRequest": {
+    "prefix": "transformRequest",
+    "body": [
+      "transformRequest: (value, record) => {$1}"
+    ],
+    "description": "Field Props: transformRequest - 在发送请求之前对数据进行处理"
+  },
+  "DataSet-field-transformResponse": {
+    "prefix": "transformResponse",
+    "body": [
+      "transformResponse: (value, ovject) => {$1}"
+    ],
+    "description": "Field Props: transformRequest - 在发送请求之前对数据进行处理"
+  },
+  "DataSet-field-trim": {
+    "prefix": "trim",
+    "body": [
+      "trim: '${1|both,left,right|none|}'"
+    ],
+    "description": "Field Props: trim - 字符串值是否去掉首尾空格，可选值: both left right none"
   },
   "DataSet-event-Update": {
-    "prefix": "event-update",
+    "prefix": "update",
     "body": [
       "update: function({ dataSet, record, name, value, oldValue }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "update - 值更新事件"
+    "description": "events: update - 值更新事件"
   },
   "DataSet-event-query": {
-    "prefix": "event-query",
+    "prefix": "query",
     "body": [
       "query: function({ dataSet, params, data }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "query - 查询事件，返回值为 false 将阻止查询"
+    "description": "events: query - 查询事件，返回值为 false 将阻止查询"
   },
   "DataSet-event-beforeLoad": {
-    "prefix": "event-beforeLoad",
+    "prefix": "beforeLoad",
     "body": [
       "beforeLoad: function({ dataSet, data }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "beforeLoad - 数据加载前的事件，用于处理请求数据"
+    "description": "events: beforeLoad - 数据加载前的事件，用于处理请求数据"
   },
   "DataSet-event-load": {
-    "prefix": "event-load",
+    "prefix": "load",
     "body": [
       "load: function({ dataSet }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "load - 数据加载完后的事件"
+    "description": "events: load - 数据加载完后的事件"
   },
   "DataSet-event-loadFailed": {
-    "prefix": "event-loadFailed",
+    "prefix": "loadFailed",
     "body": [
       "loadFailed: function({ dataSet }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "loadFailed - 数据加载失败后的事件"
+    "description": "events: loadFailed - 数据加载失败后的事件"
   },
   "DataSet-event-submit": {
-    "prefix": "event-submit",
+    "prefix": "submit",
     "body": [
       "submit: function({ dataSet, data }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "submit - 提交事件，返回值为 false 将阻止提交"
+    "description": "events: submit - 提交事件，返回值为 false 将阻止提交"
   },
   "DataSet-event-submitSuccess": {
-    "prefix": "event-submitSuccess",
+    "prefix": "submitSuccess",
     "body": [
       "submitSuccess: function({ dataSet, data }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "submitSuccess - 提交成功事件"
+    "description": "events: submitSuccess - 提交成功事件"
   },
   "DataSet-event-submitFailed": {
-    "prefix": "event-submitFailed",
+    "prefix": "submitFailed",
     "body": [
       "submitFailed: function({ dataSet }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "submitFailed - 提交失败事件"
+    "description": "events: submitFailed - 提交失败事件"
   },
   "DataSet-event-select": {
-    "prefix": "event-selecet",
+    "prefix": "selecet",
     "body": [
       "select: function({ dataSet, record, previous }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "select - 选择记录事件"
+    "description": "events: select - 选择记录事件"
   },
   "DataSet-event-unSelect": {
-    "prefix": "event-unSelect",
+    "prefix": "unSelect",
     "body": [
       "unSelect: function({ dataSet, record }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "unSelect - 撤销选择记录事件"
+    "description": "events: unSelect - 撤销选择记录事件"
   },
   "DataSet-event-selectAll": {
-    "prefix": "event-selectAll",
+    "prefix": "selectAll",
     "body": [
       "selectAll: function({ dataSet }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "selectAll - 全选记录事件"
+    "description": "events: selectAll - 全选记录事件"
   },
   "DataSet-event-unSelectAll": {
-    "prefix": "event-unSelectAll",
+    "prefix": "unSelectAll",
     "body": [
       "unSelectAll: function({ dataSet }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "unSelectAll - 撤销全选记录事件"
+    "description": "events: unSelectAll - 撤销全选记录事件"
   },
   "DataSet-event-indexChange": {
-    "prefix": "event-indexChange",
+    "prefix": "indexChange",
     "body": [
       "indexChange: function({ dataSet, record, previous }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "indexChange - 当前记录变更事件"
+    "description": "events: indexChange - 当前记录变更事件"
   },
   "DataSet-event-fieldChange": {
-    "prefix": "event-fieldChange",
+    "prefix": "fieldChange",
     "body": [
       "fieldChange: function({ dataSet, record, name, propsName, value, oldValue }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "fieldChange - 字段属性变更事件"
+    "description": "events: fieldChange - 字段属性变更事件"
   },
   "DataSet-event-create": {
-    "prefix": "event-create",
+    "prefix": "create",
     "body": [
       "create: function({ dataSet, record }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "create - 记录创建事件"
+    "description": "events: create - 记录创建事件"
   },
   "DataSet-event-remove": {
-    "prefix": "event-remove",
+    "prefix": "remove",
     "body": [
       "remove: function({ dataSet, recorevent }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "remove - 记录移除事件"
+    "description": "events: remove - 记录移除事件"
   },
   "DataSet-event-export": {
-    "prefix": "event-export",
+    "prefix": "export",
     "body": [
       "export: function({ dataSet, params, data }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "export - 导出事件，返回值为 false 将阻止导出"
+    "description": "events: export - 导出事件，返回值为 false 将阻止导出"
   },
   "DataSet-event-beforeDelete": {
-    "prefix": "event-beforeDelete",
+    "prefix": "beforeDelete",
     "body": [
       "beforeDelete: function({ dataSet, recorevent }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "beforeDelete - 数据删除前的事件， 返回值为 false 将阻止删除"
+    "description": "events: beforeDelete - 数据删除前的事件， 返回值为 false 将阻止删除"
   },
   "DataSet-event-reset": {
-    "prefix": "event-reset",
+    "prefix": "reset",
     "body": [
       "reset: function({ dataSet, recorevent }) {",
-      "\t$0",
+      "\t$1",
       "}"
     ],
-    "description": "reset - 数据重置事件"
+    "description": "events: reset - 数据重置事件"
   }
 }
