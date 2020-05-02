@@ -2,6 +2,7 @@
 	"name": "c7n-dataset-plugin",
 	"displayName": "c7n-dataset-plugin",
 	"description": "choerodon-ui/pro 语法补全插件",
+	"repository": "https://github.com/Xeonice/vscode-dataset-extension",
 	"keywords": ["dataset", "c7n-ui", "choerodon-ui"],
 	"version": "0.1.0",
 	"publisher": "douglas",
