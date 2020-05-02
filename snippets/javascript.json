@@ -24,7 +24,7 @@
       "\tpageSize: ${5:10},",
       "\tqueryFields: [",
       "\t\t$6",
-      "\t]",
+      "\t],",
       "\tfields: [",
       "\t\t$7",
       "\t],",
