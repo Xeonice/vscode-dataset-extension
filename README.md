@@ -27,7 +27,7 @@
 
 ## Known Issues
 
-暂无，欢迎在 issue 区进行补充
+将 `snippet` 迁移至 `lsp`，使之具备跨 `ide` 的功能
 
 ## Release Notes
 
