@@ -40,6 +40,7 @@ function insertKeyword(word, mode = 'noDot', index) {
     }
 
     return snippets[`${word}-${index}`] ? {
+        type: snippets[`${word}-${index}`].type,
         snippets: snippets[`${word}-${index}`].body.join('\n'),
         detail: snippets[`${word}-${index}`].description,
         docs: snippets[`${word}-${index}`].docs || null,
@@ -48,13 +49,6 @@ function insertKeyword(word, mode = 'noDot', index) {
         detail: null,
         docs: null,
     };
-}
-
-// insert xmake command text
-function insertKeywordWithDot(func) {
-    return {
-        snippets: func + '(${1})' 
-    }
 }
 
 // get suggestions
@@ -72,7 +66,8 @@ function getSuggestions(cmdlist, currentWord, kind, insertText, matchPredicate, 
                     if (insertText == null || insertText == '') {
                         item.insertText = cmd;
                     } else {
-                        const { snippets, detail, docs } = insertText(cmd, mode, index);
+                        const { snippets, detail, docs, type } = insertText(cmd, mode, index);
+                        item.kind = type || kind;
                         item.insertText = new vscode.SnippetString(snippets);
                         item.documentation = new vscode.MarkdownString(docs);
                         item.detail = detail;
