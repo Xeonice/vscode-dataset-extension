@@ -2,6 +2,12 @@
 
 针对 choerodon-ui/pro DataSet 定制的代码补全插件，其最终目标是省去你查阅文档的时间。
 
+## Install
+
+该插件现目前暂未发布至插件市场，需要以 vsix 方法进行安装
+
+`（ctrl / command） + p` 唤出命令面板后，输入 `install from vsix`，然后选择文件路径即可。
+
 ## Features
 
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
@@ -28,6 +34,7 @@
 ## Known Issues
 
 将 `snippet` 迁移至 `lsp`，使之具备跨 `ide` 的功能
+语法补全并加入文档
 
 ## Release Notes
 

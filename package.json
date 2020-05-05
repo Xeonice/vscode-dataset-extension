@@ -6,6 +6,7 @@
 	"keywords": ["dataset", "c7n-ui", "choerodon-ui"],
 	"version": "0.1.0",
 	"publisher": "douglas",
+	"icon": "images/choerodon-community.png",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
@@ -13,9 +14,9 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"onCommand:extension.sayHello"
+		"onLanguage:javascript"
 	],
-	"main": "./extension.js",
+	"main": "./src/extension.js",
 	"contributes": {
 		"snippets": [
 			{
