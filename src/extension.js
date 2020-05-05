@@ -7,7 +7,7 @@ const vscode = require('vscode');
 exports.activate = function(context) {
     console.log('恭喜，您的扩展“vscode-plugin-demo”已被激活！');
     console.log(vscode);
-    require('./hover-provider')(context); // 悬停提示
+    // require('./hover-provider')(context); // 悬停提示
     require('./completion')(context);
     // const testFn = require('./test-require-function');
     // console.log(testFn); // vscode的日志输出不可靠，这里竟然会打印null？！
