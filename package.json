@@ -14,14 +14,37 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"onLanguage:javascript"
+		"onLanguage:javascript",
+		"onLanguage:typescript",
+		"onLanguage:javascriptreact",
+		"onLanguage:typescriptreact"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"snippets": [
 			{
 				"language": "javascript",
-				"path": "./snippets/javascript.json"
+				"path": "./snippets/script.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/script.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./snippets/script.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./snippets/script.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/reactComponent.json"	
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./snippets/reactComponent.json"
 			}
 		]
 	},

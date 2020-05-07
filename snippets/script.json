@@ -1,45 +1,45 @@
 {
   "DataSet-import": {
-    "prefix": "ds-import",
+    "prefix": "importds",
     "body": [
       "import { DataSet } from \"choerodon-ui/pro\";"
     ],
     "description": "从 choerodon-ui/pro 引入 DataSet"
   },
   "DataSet-new": {
-    "prefix": "ds-new",
+    "prefix": "newds",
     "body": [
       "const ${1:dataSet} = new DataSet(${2:newDataSet})"
     ],
     "description": "新建 DataSet"
   },
   "DataSet-init": {
-    "prefix": "ds-init",
+    "prefix": "initds",
     "body": [
-      "{",
-      "\tautoQuery: ${1|true,false|},",
-      "\tautoCreate: ${2|true,false|},  ",
-      "\tselection: ${3|'single','multiple',false|},",
-      "\tpaging: ${4|false,true|},",
-      "\tpageSize: ${5:10},",
+      "const ${1:newDataSet} = {",
+      "\tautoQuery: ${2|true,false|},",
+      "\tautoCreate: ${3|true,false|},  ",
+      "\tselection: ${4|'single','multiple',false|},",
+      "\tpaging: ${5|false,true|},",
+      "\tpageSize: ${6:10},",
       "\tqueryFields: [",
-      "\t\t$6",
+      "\t\t",
       "\t],",
       "\tfields: [",
-      "\t\t$7",
+      "\t\t",
       "\t],",
       "\ttransport: {",
-      "\t\t$8",
+      "\t\t",
       "\t},",
       "\tevents: {",
-      "\t\t$9",
+      "\t\t",
       "\t}$0",
       "}"
     ],
     "description": "初始化 DataSet 结构"
   },
   "DataSet-queryField-init": {
-    "prefix": "queryField-new",
+    "prefix": "newQuery",
     "body": [
       "{", 
       "\tname: '${1}',", 
@@ -50,7 +50,7 @@
     "description": "新建一条 queryField"
   },
   "DataSet-field-init": {
-    "prefix": "field-new",
+    "prefix": "newField",
     "body": [
       "{", 
       "\tname: '${1}',", 

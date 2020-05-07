@@ -1,0 +1,24 @@
+{
+    "newForm": {
+        "prefix": "newForm",
+        "body": [
+          "<Form",
+          "\tdataSet={$1}",
+          ">",
+          "\t$0",
+          "</Form>"
+        ],
+        "description": "新建 Form"
+    },
+    "newTable": {
+        "prefix": "newTable",
+        "body": [
+          "<Table",
+          "\tdataSet={$1}",
+          ">",
+          "\t$0",
+          "</Table>"
+        ],
+        "description": "新建 Table"
+    }
+}

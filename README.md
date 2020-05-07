@@ -10,17 +10,19 @@
 
 ## Features
 
+![screenshot](images/screenshot.gif)
+
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
 
 ### JavaScript DataSet Snippets
 
 | Snippet                      | Purpose                                                              |
 | ---------------------------- | -------------------------------------------------------------------- |
-| `ds-import`                  | 导入 DataSet 方法                                                     |
-| `ds-new`                     | 新建 DataSet                                                          |
-| `ds-init`                    | 初始化一个 DataSet                                                     |
-| `field-new`                  | 新建一个 field 字段                                                    |
-| `queryField-new`             | 新建一个 queryField 字段                                               |
+| `importds`                  | 导入 DataSet 方法                                                     |
+| `newds`                     | 新建 DataSet                                                          |
+| `initds`                    | 初始化一个 DataSet                                                     |
+| `newField`                  | 新建一个 field 字段                                                    |
+| `newQuery`                  | 新建一个 queryField 字段                                               |
 
 `transport` 部分，因为存在两套参数，因此被分成了 `axios` 和 `func` 部分。例如 `read` => `read-axios` / `read-func`。
 

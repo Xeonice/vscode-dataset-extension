@@ -130,11 +130,11 @@ function resolveCompletionItem(item, token) {
 module.exports = function(context) {
     // 注册鼠标悬停提示
     context.subscriptions.push(
-        vscode.languages.registerCompletionItemProvider('javascript', {
+        vscode.languages.registerCompletionItemProvider(['javascript', 'javascriptreact', 'typescript'], {
             provideCompletionItems: (document, position, token) => provideCompletionItems(document, position, token),
             resolveCompletionItem
         }),
-        vscode.languages.registerCompletionItemProvider('javascript', {
+        vscode.languages.registerCompletionItemProvider(['javascript', 'javascriptreact', 'typescript'], {
             provideCompletionItems: (document, position, token) => provideCompletionItems(document, position, token, '.'),
             resolveCompletionItem
         }, '.'),
