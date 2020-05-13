@@ -3,8 +3,12 @@
 	"displayName": "c7n-dataset-plugin",
 	"description": "choerodon-ui/pro 语法补全插件",
 	"repository": "https://github.com/Xeonice/vscode-dataset-extension",
-	"keywords": ["dataset", "c7n-ui", "choerodon-ui"],
-	"version": "0.1.0",
+	"keywords": [
+		"dataset",
+		"c7n-ui",
+		"choerodon-ui"
+	],
+	"version": "0.1.1",
 	"publisher": "handMS",
 	"icon": "images/choerodon-community.png",
 	"engines": {
@@ -40,7 +44,7 @@
 			},
 			{
 				"language": "javascriptreact",
-				"path": "./snippets/reactComponent.json"	
+				"path": "./snippets/reactComponent.json"
 			},
 			{
 				"language": "typescriptreact",
