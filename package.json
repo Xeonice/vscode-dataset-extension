@@ -5,7 +5,7 @@
 	"repository": "https://github.com/Xeonice/vscode-dataset-extension",
 	"keywords": ["dataset", "c7n-ui", "choerodon-ui"],
 	"version": "0.1.0",
-	"publisher": "douglas",
+	"publisher": "handMS",
 	"icon": "images/choerodon-community.png",
 	"engines": {
 		"vscode": "^1.44.0"
