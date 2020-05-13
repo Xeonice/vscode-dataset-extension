@@ -4,9 +4,7 @@
 
 ## Install
 
-该插件现目前暂未发布至插件市场，需要以 vsix 方法进行安装
-
-`（ctrl / command） + p` 唤出命令面板后，输入 `install from vsix`，然后选择文件路径即可。
+[c7n-dataset-plugin](https://marketplace.visualstudio.com/items?itemName=handMS.c7n-dataset-plugin)
 
 ## Features
 
