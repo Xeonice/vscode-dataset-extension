@@ -59,5 +59,16 @@
       "}$0"
     ],
     "description": "新建一条 field"
+  },
+  "DataSet-axiosConfig": {
+    "prefix": "newAxiosConfig",
+    "body": [
+      "{",
+      "\turl: '${1}'",
+      "\tmethod: '${2|get,post,put,delete|}'",
+      "\tdata: ${3}",
+      "}"
+    ],
+    "description": "新建一条 AxiosConfig"
   }
 }

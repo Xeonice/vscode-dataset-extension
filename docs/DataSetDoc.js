@@ -297,18 +297,7 @@ const dsDocs = {
       },
       // transport
       {
-        "prefix": "create-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "create: {",
-          "\turl: '${1}', ",
-          "\tmethod: '${2:post}'",
-          "}$0"
-        ],
-        "description": "Transport: create - 新建请求的 axios 配置或 url 字符串 - 返回 axios 对象"
-      },
-      {
-        "prefix": "create-func",
+        "prefix": "create",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "create: ({ data, params, dataSet }) => ({",
@@ -316,21 +305,10 @@ const dsDocs = {
           "\tmethod: '${2:post}'",
           "})$0"
         ],
-        "description": "Transport: create - 新建请求的 axios 配置或 url 字符串 - 返回函数"
+        "description": "Transport: create - 新建请求的 axios 配置或 url 字符串"
       },
       {
-        "prefix": "read-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "read: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:get}'",
-          "}$0"
-        ],
-        "description": "Transport: read - 查询请求的 axios 配置或 url 字符串 - 返回 axios 对象"
-      },
-      {
-        "prefix": "read-func",
+        "prefix": "read",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "read: ({ data, params, dataSet }) => ({",
@@ -338,21 +316,10 @@ const dsDocs = {
           "\tmethod: '${2:get}'",
           "})$0"
         ],
-        "description": "Transport: read - 查询请求的 axios 配置或 url 字符串 - 返回函数"
+        "description": "Transport: read - 查询请求的 axios 配置或 url 字符串"
       },
       {
-        "prefix": "update-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "update: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:put}'",
-          "}$0"
-        ],
-        "description": "Transport: update - 更新请求的 axios 配置或 url 字符串 - 返回 axios 对象"
-      },
-      {
-        "prefix": "update-func",
+        "prefix": "update",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "update: ({ data, params, dataSet }) => ({",
@@ -360,21 +327,10 @@ const dsDocs = {
           "\tmethod: '${2:put}'",
           "})$0"
         ],
-        "description": "Transport: update - 更新请求的 axios 配置或 url 字符串 - 返回函数"
+        "description": "Transport: update - 更新请求的 axios 配置或 url 字符串"
       },
       {
-        "prefix": "destory-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "destory: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:delete}'",
-          "}$0"
-        ],
-        "description": "Transport: destory - 删除请求的 axios 配置或 url 字符串 - 返回 axios 对象"
-      },
-      {
-        "prefix": "destory-func",
+        "prefix": "destory",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "destory: ({ data, params, dataSet }) => ({",
@@ -382,21 +338,10 @@ const dsDocs = {
           "\tmethod: '${2:delete}'",
           "})$0"
         ],
-        "description": "Transport: destory - 删除请求的 axios 配置或 url 字符串 - 返回函数"
+        "description": "Transport: destory - 删除请求的 axios 配置或 url 字符串"
       },
       {
-        "prefix": "validate-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "validate: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:get}'",
-          "}$0"
-        ],
-        "description": "Transport: validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回 axios 对象"
-      },
-      {
-        "prefix": "validate-func",
+        "prefix": "validate",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "validate: ({ data, params, dataSet }) => ({",
@@ -404,21 +349,10 @@ const dsDocs = {
           "\tmethod: '${2:get}'",
           "})$0"
         ],
-        "description": "Transport: validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。 - 返回函数"
+        "description": "Transport: validate - 唯一性校验请求的 axios 配置或 url 字符串。当字段配了 unique 属性时，在当前数据集中没有重复数据的情况下，则会发起远程唯一性校验。校验的请求 data 格式为 { unique: [{fieldName1: fieldValue1,fieldName2: fieldValue2...}] }，响应格式为 boolean | boolean[]。"
       },
       {
-        "prefix": "submit-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "submit: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:post}'",
-          "}$0"
-        ],
-        "description": "Transport: submit - create, update, destroy 的默认配置或 url 字符串。 - 返回 axios 对象"
-      },
-      {
-        "prefix": "submit-func",
+        "prefix": "submit",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "submit: ({ data, params, dataSet }) => ({",
@@ -426,21 +360,10 @@ const dsDocs = {
           "\tmethod: '${2:post}'",
           "})$0"
         ],
-        "description": "Transport: submit - create, update, destroy 的默认配置或 url 字符串。 - 返回函数"
+        "description": "Transport: submit - create, update, destroy 的默认配置或 url 字符串。"
       },
       {
-        "prefix": "tls-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "tls: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:get}'",
-          "}$0"
-        ],
-        "description": "Transport: tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回 axios 对象"
-      },
-      {
-        "prefix": "tls-func",
+        "prefix": "tls",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "tls: ({ data, params, dataSet, record, name }) => ({",
@@ -448,21 +371,10 @@ const dsDocs = {
           "\tmethod: '${2:get}'",
           "})$0"
         ],
-        "description": "Transport: tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。 - 返回函数"
+        "description": "Transport: tls - 多语言数据请求的 axios 配置或 url 字符串。UI 接收的接口返回值格式为：[{ name: { zh_CN: '简体中文', en_US: '美式英语', ... }}]， 其中 name 是字段名。请使用全局配置 transport 的 tls 钩子统一处理。"
       },
       {
-        "prefix": "exports-axios",
-        "type": vscode.CompletionItemKind.Snippet,
-        "body": [
-          "exports: {",
-          "\turl: '${1}',",
-          "\tmethod: '${2:post}'",
-          "}$0"
-        ],
-        "description": "Transport: exports - 导出的配置或 url 字符串 - 返回 axios 对象"
-      },
-      {
-        "prefix": "exports-func",
+        "prefix": "exports",
         "type": vscode.CompletionItemKind.Snippet,
         "body": [
           "exports: ({ data, params, dataSet }) => ({",
@@ -470,7 +382,7 @@ const dsDocs = {
           "\tmethod: '${2:post}'",
           "})$0"
         ],
-        "description": "Transport: exports - 导出的配置或 url 字符串 - 返回函数"
+        "description": "Transport: exports - 导出的配置或 url 字符串"
       },
       // field props
       {
