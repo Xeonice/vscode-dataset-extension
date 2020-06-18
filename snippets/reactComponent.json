@@ -1,24 +1,292 @@
 {
-    "newForm": {
-        "prefix": "newForm",
-        "body": [
-          "<Form",
-          "\tdataSet={$1}",
-          ">",
-          "\t$0",
-          "</Form>"
-        ],
-        "description": "新建 Form"
-    },
-    "newTable": {
-        "prefix": "newTable",
-        "body": [
-          "<Table",
-          "\tdataSet={$1}",
-          ">",
-          "\t$0",
-          "</Table>"
-        ],
-        "description": "新建 Table"
-    }
+  "Form": {
+    "prefix": "Form",
+    "body": [
+      "<Form",
+      "\tdataSet={$1}",
+      ">",
+      "\t$0",
+      "</Form>"
+    ],
+    "description": "新建 Form"
+  },
+  "Table": {
+    "prefix": "Table",
+    "body": [
+      "<Table",
+      "\tdataSet={$1}",
+      ">",
+      "\t<Column name=\"$0\" />",
+      "</Table>"
+    ],
+    "description": "新建 Table"
+  },
+  "Column": {
+    "prefix": "Column",
+    "body": [
+      "<Column name=\"$1\" />"
+    ],
+    "description": "新建 Column"
+  },
+  "Button": {
+    "prefix": "Button",
+    "body": [
+      "<Button type=\"${1|button,submit,reset|}\" onClick={$2}>${0}</Button>"
+    ],
+    "description": "新建 Button"
+  },
+  "Currency": {
+    "prefix": "Currency",
+    "body": [
+      "<Currency name=\"$0\" />"
+    ],
+    "description": "新建 Currency"
+  },
+  "TextField": {
+    "prefix": "TextField",
+    "body": [
+      "<TextField name=\"$0\" />"
+    ],
+    "description": "新建 TextField"
+  },
+  "IntlField": {
+    "prefix": "IntlField",
+    "body": [
+      "<IntlField name=\"$0\" />"
+    ],
+    "description": "新建 IntlField"
+  },
+  "Lov": {
+    "prefix": "Lov",
+    "body": [
+      "<Lov name=\"$0\" />"
+    ],
+    "description": "新建 Lov"
+  },
+  "NumberField": {
+    "prefix": "NumberField",
+    "body": [
+      "<NumberField name=\"$0\" />"
+    ],
+    "description": "新建 NumberField"
+  },
+  "Password": {
+    "prefix": "Password",
+    "body": [
+      "<Password name=\"$0\" />"
+    ],
+    "description": "新建 Password"
+  },
+  "Range": {
+    "prefix": "Range",
+    "body": [
+      "<Range name=\"$0\" />"
+    ],
+    "description": "新建 Range"
+  },
+  "Radio": {
+    "prefix": "Radio",
+    "body": [
+      "<Radio dataSet={$1} name=\"$2\" value=\"$3\">$3</Radio>"
+    ],
+    "description": "新建 Radio"
+  },
+  "Transfer": {
+    "prefix": "Transfer",
+    "body": [
+      "<Transfer dataSet={$1} name=\"$2\" />"
+    ],
+    "description": "新建 Transfer"
+  },
+  "Switch": {
+    "prefix": "Switch",
+    "body": [
+      "<Switch name=\"$1\" value=\"$0\"  />"
+    ],
+    "description": "新建 Switch"
+  },
+  "Select": {
+    "prefix": "Select",
+    "body": [
+      "<Select name=\"$1\">",
+      "\t<Option value=\"$0\">$0</Option>",
+      "</Select>"
+    ],
+    "description": "新建 Select"
+  },
+  "TextArea": {
+    "prefix": "TextArea",
+    "body": [
+      "<TextArea name=\"$0\" />"
+    ],
+    "description": "新建 TextArea"
+  },
+  "DatePicker": {
+    "prefix": "DatePicker",
+    "body": [
+      "<DatePicker name=\"$0\" />"
+    ],
+    "description": "新建 DatePicker"
+  },
+  "AutoComplete": {
+    "prefix": "AutoComplete",
+    "body": [
+      "<AutoComplete name=\"$1\" options={$0} />"
+    ],
+    "description": "新建 AutoComplete"
+  },
+  "ColorPicker": {
+    "prefix": "ColorPicker",
+    "body": [
+      "<ColorPicker name=\"$0\" />"
+    ],
+    "description": "新建 ColorPicker"
+  },
+  "CodeArea": {
+    "prefix": "CodeArea",
+    "body": [
+      "<CodeArea name=\"$1\" formatter={$2} options={$3} />"
+    ],
+    "description": "新建 CodeArea"
+  },
+  "CheckBox": {
+    "prefix": "CheckBox",
+    "body": [
+      "<CheckBox name=\"$1\" value=\"$2\" />"
+    ],
+    "description": "新建 CheckBox"
+  },
+  "Cascader": {
+    "prefix": "Cascader",
+    "body": [
+      "<Cascader name=\"$1\" expandTrigger={$2} />"
+    ],
+    "description": "新建 Cascader"
+  },
+  "EmailField": {
+    "prefix": "EmailField",
+    "body": [
+      "<EmailField name=\"$0\" />"
+    ],
+    "description": "新建 EmailField"
+  },
+  "IconPicker": {
+    "prefix": "IconPicker",
+    "body": [
+      "<IconPicker name=\"$0\" />"
+    ],
+    "description": "新建 IconPicker"
+  },
+  "SelectBox": {
+    "prefix": "SelectBox",
+    "body": [
+      "<SelectBox name=\"$1\">",
+      "\t<Option value=\"$0\">$0</Option>",
+      "</SelectBox>"
+    ],
+    "description": "新建 SelectBox"
+  },
+  "Tree": {
+    "prefix": "Tree",
+    "body": [
+      "<Tree dataSet={$1} checkable renderer={$0} />"
+    ],
+    "description": "新建 Tree"
+  },
+  "Upload": {
+    "prefix": "Upload",
+    "body": [
+      "<Upload ",
+      "\theaders= {{",
+      "\t\t'Access-Control-Allow-Origin': '*',",
+      "\t}}",
+      "\taction=\"$1\"",
+      "\tmultiple={${2|true,false|}}",
+      "\taccept={['.deb', '.txt', '.pdf', 'image/*']}",
+      "\tuploadImmediately={${3|true,false|}}",
+      "\tshowUploadList={${4|true,false|}}",
+      "/>"
+    ],
+    "description": "新建 Upload"
+  },
+  "Output": {
+    "prefix": "Output",
+    "body": [
+      "<Output name=\"$1\" />"
+    ],
+    "description": "新建 Output"
+  },
+  "Tooltip": {
+    "prefix": "Tooltip",
+    "body": [
+      "<Tooltip",
+      "\thidden={$1}",
+      "\ttitle={$2}",
+      ">",
+      "\t<span>$0</span>",
+      "</Tooltip>"
+    ],
+    "description": "新建 Tooltip"
+  },
+  "Dropdown": {
+    "prefix": "Dropdown",
+    "body": [
+      "<Dropdown overlay={${1:menu}}>",
+      "\t<Button>",
+      "\t\t$2 <Icon type=\"${0:arrow_drop_down}\" />",
+      "\t</Button>",
+      "</Dropdown>"
+    ],
+    "description": "新建 Dropdown"
+  },
+  "Pagination": {
+    "prefix": "Pagination",
+    "body": [
+      "<Pagination dataSet={$0} />"
+    ],
+    "description": "新建 Pagination"
+  },
+  "Progress": {
+    "prefix": "Progress",
+    "body": [
+      "<Progress name=\"{$0}\" />"
+    ],
+    "description": "新建 Progress"
+  },
+  "Spin": {
+    "prefix": "Spin",
+    "body": [
+      "<Spin dataSet={$1}>",
+      "\t<Form dataSet={$1}>",
+      "\t\t$0",
+      "\t</Form>",
+      "</Spin>"
+    ],
+    "description": "新建 Spin"
+  },
+  "Skeleton": {
+    "prefix": "Skeleton",
+    "body": [
+      "<Skeleton dataSet={$1} active>",
+      "\t<Form dataSet={$1}>",
+      "\t\t$0",
+      "\t</Form>",
+      "</Skeleton>"
+    ],
+    "description": "新建 Skeleton"
+  },
+  "Modal.open": {
+    "prefix": "Modal.open",
+    "body": [
+      "Modal.open({",
+      "\tkey: ${1:modalKey},",
+      "\ttitle: '$2',",
+      "\tchildren: <${3} />,",
+      "\tokText: '${4:确定}',",
+      "\tonOk: ${5:handleOk},",
+      "\tonCancel: ${5:handleCancel},",
+      "});"
+    ],
+    "description": "Modal.open"
+  }
 }
