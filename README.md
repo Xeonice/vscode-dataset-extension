@@ -11,11 +11,13 @@
 ## Features
 
 ![screenshot](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/screenshot.gif)
+![c7n-component-autoCompletion](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/c7n-component-autoCompletion.gif)
 
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
 
 ### JavaScript DataSet Snippets
 
+#### DataSet相关
 | Snippet                      | Purpose                                                             |
 | ---------------------------- | --------------------------------------------------------------------|
 | `importds`                   | 导入 DataSet 方法                                                    |
@@ -24,8 +26,45 @@
 | `newField`                   | 新建一个 field 字段                                                   |
 | `newQuery`                   | 新建一个 queryField 字段                                              |
 | `newAxiosConfig`             | 新建一个 AxiosConfig                                                 |
-| `newForm`                    | 新建一个 Form                                                        |
-| `newTable`                   | 新建一个 Table                                                       |
+
+#### C7N组件相关
+| Snippet                      | Purpose                                                             |
+| ---------------------------- | --------------------------------------------------------------------|
+| `Form`                       | 新建一个 Form                                                        |
+| `Table`                      | 新建一个 Table                                                       |
+| `Column`                     | 新建一个 Column                                                      |
+| `Button`                     | 新建一个 Button                                                      |
+| `Currency`                   | 新建一个 Currency                                                    |
+| `TextField`                  | 新建一个 TextField                                                   |
+| `IntlField`                  | 新建一个 IntlField                                                   |
+| `Lov`                        | 新建一个 Lov                                                         |
+| `NumberField`                | 新建一个 NumberField                                                 |
+| `Password`                   | 新建一个 Password                                                    |
+| `Range`                      | 新建一个 Range                                                       |
+| `Radio`                      | 新建一个 Radio                                                       |
+| `Transfer`                   | 新建一个 Transfer                                                    |
+| `Switch`                     | 新建一个 Switch                                                      |
+| `Select`                     | 新建一个 Select                                                      |
+| `TextArea`                   | 新建一个 TextArea                                                    |
+| `DatePicker`                 | 新建一个 DatePicker                                                  |
+| `AutoComplete`               | 新建一个 AutoComplete                                                |
+| `ColorPicker`                | 新建一个 ColorPicker                                                 |
+| `CodeArea`                   | 新建一个 CodeArea                                                    |
+| `CheckBox`                   | 新建一个 CheckBox                                                    |
+| `Cascader`                   | 新建一个 Cascader                                                    |
+| `EmailField`                 | 新建一个 EmailField                                                  |
+| `IconPicker`                 | 新建一个 IconPicker                                                  |
+| `SelectBox`                  | 新建一个 SelectBox                                                   |
+| `Tree`                       | 新建一个 Tree                                                        |
+| `Upload`                     | 新建一个 Upload                                                      |
+| `Output`                     | 新建一个 Output                                                      |
+| `Tooltip`                    | 新建一个 Tooltip                                                     |
+| `Dropdown`                   | 新建一个 Dropdown                                                    |
+| `Pagination`                 | 新建一个 Pagination                                                  |
+| `Progress`                   | 新建一个 Progress                                                    |
+| `Spin`                       | 新建一个 Spin                                                        |
+| `Skeleton`                   | 新建一个 Skeleton                                                    |
+| `Modal.open`                 | Modal.open方法                                                      |
 
 所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/components-pro/data-set-cn/#DataToJSON)
 

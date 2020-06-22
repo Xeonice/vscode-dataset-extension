@@ -4,6 +4,13 @@ All notable changes to the "c7n-dataset-plugin" extension will be documented in 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.3]
+
+- 新增 `newAxiosConfig` 代码片段，可新增 `AxiosConfig`
+- 删除代码片段 C7N 代码片段
+- 将原先的 `transport` 功能中的 axios 部分移除，运用 `newAxiosConfig` 代替
+- 删除代码片段 `newForm`、`newTable`
+
 ## [0.1.2]
 
 - 新增 `newAxiosConfig` 代码片段，可新增 `AxiosConfig`
