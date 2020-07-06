@@ -21,10 +21,25 @@
 		"onLanguage:javascript",
 		"onLanguage:typescript",
 		"onLanguage:javascriptreact",
-		"onLanguage:typescriptreact"
+		"onLanguage:typescriptreact",
+		"onCommand:c7n.search"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
+		"commands": [
+			{
+				"command": "c7n.search",
+				"title": "c7n.search"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "c7n.search",
+					"group": "navigation"
+				}
+			]
+		},
 		"snippets": [
 			{
 				"language": "javascript",

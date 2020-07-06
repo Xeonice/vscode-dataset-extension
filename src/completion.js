@@ -5,7 +5,7 @@ const docs = require('../docs/DataSetDoc');
 // get lua keyword list
 function getKeywordsWithDot() {
     const { withDot: copy } = docs;
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         resolve(copy.map((item) => item.prefix));
     });
 }
@@ -13,7 +13,7 @@ function getKeywordsWithDot() {
 // get xmake command list
 function getKeywordsWithoutDot() {
     const { withoutDot: copy } = docs;
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         // the default xmake command list
         const defaultCmds = copy.map((item) => item.prefix);
         // TODO: get commands from `xmake man --commands-list`
@@ -123,6 +123,7 @@ function provideCompletionItems(document, position, token, mode = '') {
     });
 }
 // resolve completion item
+// eslint-disable-next-line no-unused-vars
 function resolveCompletionItem(item, token) {
     return null;
 }

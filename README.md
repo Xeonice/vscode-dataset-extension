@@ -12,6 +12,7 @@
 
 ![screenshot](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/screenshot.gif)
 ![c7n-component-autoCompletion](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/c7n-component-autoCompletion.gif)
+![内置文档](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/built-in-document.gif)
 
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
 
@@ -67,6 +68,12 @@
 | `Modal.open`                 | Modal.open方法                                                      |
 
 所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/components-pro/data-set-cn/#DataToJSON)
+
+### 内置文档
+可以使用**c7n.search**命令快速查看文档。有两种使用方式
+1. 在命令面板输入**c7n.search**找到对应命令执行,选择自己需要查询文档的组件
+2. 选择需要查询文档的组件,鼠标右击选择**c7n.search**命令进行查看
+
 
 ## Extension Settings
 
