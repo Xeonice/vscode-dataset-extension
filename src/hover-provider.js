@@ -1,23 +1,35 @@
 const vscode = require('vscode');
-const path = require('path');
-const fs = require('fs');
+const { getCompoentApi } = require('../src/utils/provider')
+
 
 /**
- * 鼠标悬停提示，当鼠标停在package.json的dependencies或者devDependencies时，
- * 自动显示对应包的名称、版本号和许可协议
+ * 组件文档悬浮提示提示 显示api部分的内容
  * @param {*} document 
  * @param {*} position 
- * @param {*} token 
  */
-function provideHover(document, position, token) {
-    const word        = document.getText(document.getWordRangeAtPosition(position));
-
-    return new vscode.Hover(`* **名称**：${word}\n*`);
+async function provideHover (document, position) {
+    const word = document.getText(document.getWordRangeAtPosition(position));
+    const text = document.getText()
+    const isC7nComponentsRegExp =
+        new RegExp(`"choerodon-ui/pro"`)
+    const isC7nComponents = isC7nComponentsRegExp.test(text)
+    if (isC7nComponents) {
+        const api = await getCompoentApi(word)
+        if (api) {
+            return new vscode.Hover(`${api}`);
+        }
+    }
+    return null
 }
 
-module.exports = function(context) {
+module.exports = function (context) {
     // 注册鼠标悬停提示
-    context.subscriptions.push(vscode.languages.registerHoverProvider('javascript', {
+    context.subscriptions.push(vscode.languages.registerHoverProvider([
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact'
+    ], {
         provideHover
     }));
 };
