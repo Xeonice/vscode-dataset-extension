@@ -9,6 +9,7 @@ exports.activate = function (context) {
     // require('./hover-provider')(context); // 悬停提示
     require('./completion')(context);
     require('./site/openSite')(context)
+    require('./hover-provider')(context)
     // const testFn = require('./test-require-function');
     // console.log(testFn); // vscode的日志输出不可靠，这里竟然会打印null？！
     // testFn(1, 2);

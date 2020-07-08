@@ -6,7 +6,7 @@ const dsDocs = {
     "type": vscode.CompletionItemKind.Property,
     "description": "data-set-props - 对应后台 ds 的 name，自动生成约定的 submitUrl, queryUrl, tlsUrl, validateUrl",
     "body": ["name: ${1}"],
-    "docs": "类型: Array<object>\n\n默认值: "
+    "docs": "类型: string\n\n默认值: "
   }, {
     "prefix": "data",
     "type": vscode.CompletionItemKind.Property,

@@ -1,6 +1,7 @@
 const vscode = require('vscode')
-const components = require('./components')
+const components = require('../utils/components')
 const { htmlTemplate } = require('./utils')
+const url = `https://choerodon.github.io/choerodon-ui/zh/procmp/`
 
 const openSite = (comp) => {
   const panel = vscode.window.createWebviewPanel(
@@ -13,7 +14,6 @@ const openSite = (comp) => {
     }
   );
 
-  const url = `https://choerodon.github.io/choerodon-ui/zh/procmp/`
   let iframeSrc = `${url}${comp}`
   if (!comp.includes('dataset')) {
     iframeSrc += `#API`
@@ -25,7 +25,6 @@ const openSite = (comp) => {
 // 注册一个文档 web view
 // 获取当前的text
 const dispose = (uri) => {
-
 
   if (components.length === 0) {
     return
@@ -41,7 +40,7 @@ const dispose = (uri) => {
       );
     if (typeof word === 'string') {
       const item = components.find(
-        v => v.label.toLowerCase() === word.toLowerCase()
+        v => v.label === word
       )
       if (item) {
         openSite(item.path)
@@ -59,7 +58,6 @@ module.exports = function (context) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand('c7n.search', dispose),
-    // vscode.commands.registerTextEditorCommand('c7n.search-text', dispose),
   );
 
 };
