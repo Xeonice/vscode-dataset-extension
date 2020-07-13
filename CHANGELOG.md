@@ -4,6 +4,15 @@ All notable changes to the "c7n-dataset-plugin" extension will be documented in 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.7]
+- C7N Pro 组件新增悬浮提示功能
+- C7N Pro 组件新增内置文档功能
+- 优化 dataset 自动补全文档生成方式
+
+## [0.1.5]
+
+- 新增 C7N Pro 组件代码片段
+
 ## [0.1.3]
 
 - 新增 `newAxiosConfig` 代码片段，可新增 `AxiosConfig`
