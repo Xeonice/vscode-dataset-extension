@@ -7,7 +7,7 @@ const openSite = (comp) => {
   const panel = vscode.window.createWebviewPanel(
     'component-view', // viewType
     "choerodon-ui", // 视图标题
-    vscode.ViewColumn.One, // 显示在编辑器的哪个部位
+    vscode.ViewColumn.Beside, // 显示在编辑器的哪个部位
     {
       enableScripts: true, // 启用JS，默认禁用
       retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
@@ -18,7 +18,7 @@ const openSite = (comp) => {
   if (!comp.includes('dataset')) {
     iframeSrc += `#API`
   }
-
+  
   panel.webview.html = htmlTemplate(iframeSrc)
 }
 

@@ -4,6 +4,9 @@ All notable changes to the "c7n-dataset-plugin" extension will be documented in 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.9]
+- 优化内置文档功能
+
 ## [0.1.7]
 - C7N Pro 组件新增悬浮提示功能
 - C7N Pro 组件新增内置文档功能
