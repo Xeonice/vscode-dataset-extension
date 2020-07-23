@@ -10,8 +10,7 @@ const { getCompoentApi } = require('../src/utils/provider')
 async function provideHover (document, position) {
     const word = document.getText(document.getWordRangeAtPosition(position));
     const text = document.getText()
-    const isC7nComponentsRegExp =
-        new RegExp(`"choerodon-ui/pro"`)
+    const isC7nComponentsRegExp = new RegExp(`choerodon-ui/pro`)
     const isC7nComponents = isC7nComponentsRegExp.test(text)
     if (isC7nComponents) {
         const api = await getCompoentApi(word)
