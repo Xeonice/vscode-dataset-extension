@@ -215,7 +215,7 @@ const dsDocs = {
     "prefix": "cascadeParams",
     "type": vscode.CompletionItemKind.Property,
     "description": "data-set-props - 级联查询参数",
-    "body": ["cascadeParams: ${1:(record, primaryKey)  => { return $1 }}"],
+    "body": ["cascadeParams: ${1:(record, primaryKey)  => { return $2 }}"],
     "docs": "类型: (record, primaryKey) => object\n\n默认值: **(record, primaryKey) => primaryKey ? record.get(primaryKey) : record.toData()**"
   }, {
     "prefix": "update",
@@ -407,7 +407,7 @@ const dsDocs = {
     "prefix": "validator",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - 校验器，当返回值为 false 或 涵盖错误信息的字符串，则为校验失败",
-    "body": ["validator: ${1:(value, name, record)  => { return $1 }}"],
+    "body": ["validator: ${1:(value, name, record)  => { return $2 }}"],
     "docs": "类型: (value, name, record) => boolean | string | undefined\n\n默认值: "
   }, {
     "prefix": "required",
@@ -509,37 +509,37 @@ const dsDocs = {
     "prefix": "lookupUrl",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - 值列表请求地址",
-    "body": ["lookupUrl: ${1:(code)  => { return $1 }}"],
+    "body": ["lookupUrl: ${1:(code)  => { return $2 }}"],
     "docs": "类型: string | (code) => string\n\n默认值: "
   }, {
     "prefix": "lovDefineUrl",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - lov 配置请求地址",
-    "body": ["lovDefineUrl: ${1:(code)  => { return $1 }}"],
+    "body": ["lovDefineUrl: ${1:(code)  => { return $2 }}"],
     "docs": "类型: string | (code) => string\n\n默认值: "
   }, {
     "prefix": "lovQueryUrl",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - lov 查询请求地址",
-    "body": ["lovQueryUrl: ${1:(code, config, { dataSet, params, data })  => { return $1 }}"],
+    "body": ["lovQueryUrl: ${1:(code, config, { dataSet, params, data })  => { return $2 }}"],
     "docs": "类型: string | (code, config, { dataSet, params, data }) => string\n\n默认值: "
   }, {
     "prefix": "lookupAxiosConfig",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - 值列表请求配置或返回配置的钩子，详见。配置中默认 url 为 lookupUrl， method 为 post。",
-    "body": ["lookupAxiosConfig: ${1:({ dataSet, record, params, lookupCode })  => { return $1 }}"],
+    "body": ["lookupAxiosConfig: ${1:({ dataSet, record, params, lookupCode })  => { return $2 }}"],
     "docs": "类型: AxiosRequestConfig| ({ dataSet, record, params, lookupCode }) => AxiosRequestConfig\n\n默认值: "
   }, {
     "prefix": "lovDefineAxiosConfig",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - lov 配置的请求配置或返回配置的钩子，详见。 配置中默认 url 为 lovDefineUrl， method 为 post。",
-    "body": ["lovDefineAxiosConfig: ${1:(code)  => { return $1 }}"],
+    "body": ["lovDefineAxiosConfig: ${1:(code)  => { return $2 }}"],
     "docs": "类型: AxiosRequestConfig| (code) => AxiosRequestConfig\n\n默认值: "
   }, {
     "prefix": "lovQueryAxiosConfig",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - lov 查询的请求配置或返回配置的钩子，详见。 配置中默认 url 为 lovQueryUrl， method 为 post。",
-    "body": ["lovQueryAxiosConfig: ${1:(code, config, { dataSet, params, data })  => { return $1 }}"],
+    "body": ["lovQueryAxiosConfig: ${1:(code, config, { dataSet, params, data })  => { return $2 }}"],
     "docs": "类型: AxiosRequestConfig| (code, config, { dataSet, params, data }) => AxiosRequestConfig\n\n默认值: "
   }, {
     "prefix": "bind",
@@ -575,13 +575,13 @@ const dsDocs = {
     "prefix": "transformRequest",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - 在发送请求之前对数据进行处理",
-    "body": ["transformRequest: ${1:(value: any, record: Record)  => { return $1 }}"],
+    "body": ["transformRequest: ${1:(value: any, record: Record)  => { return $2 }}"],
     "docs": "类型: (value: any, record: Record) => any\n\n默认值: "
   }, {
     "prefix": "transformResponse",
     "type": vscode.CompletionItemKind.Property,
     "description": "field-props - 在获得响应之后对数据进行处理",
-    "body": ["transformResponse: ${1:(value: any, object: any)  => { return $1 }}"],
+    "body": ["transformResponse: ${1:(value: any, object: any)  => { return $2 }}"],
     "docs": "类型: (value: any, object: any) => any\n\n默认值: "
   }, {
     "prefix": "trim",

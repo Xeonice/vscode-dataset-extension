@@ -84,6 +84,7 @@ const tabelCellRule_props = ({ arr, lastData, currentType }) => {
         `${lastData.prefix}: \${1}`
       ]
     } else if (typeArr.length === 1) {
+      typeArr[0] = typeArr[0].replace('$1', '$2')
       lastData.body = [
         `${lastData.prefix}: \${1:${typeArr[0]}}`
       ]
