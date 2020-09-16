@@ -10,10 +10,10 @@
 
 ## Features
 
-![screenshot](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/screenshot.gif)
-![c7n-component-autoCompletion](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/c7n-component-autoCompletion.gif)
-![内置文档](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/built-in-document.gif)
-![悬浮提示](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/hover.gif)
+![screenshot](https://aboyl.gitee.io/vscode-dataset-extension/images/screenshot.gif)
+![c7n-component-autoCompletion](https://aboyl.gitee.io/vscode-dataset-extension/images/c7n-component-autoCompletion.gif)
+![内置文档](https://aboyl.gitee.io/vscode-dataset-extension/images/built-in-document.gif)
+![悬浮提示](https://aboyl.gitee.io/vscode-dataset-extension/images/hover.gif)
 
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
 
