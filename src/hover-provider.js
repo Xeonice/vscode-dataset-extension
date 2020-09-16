@@ -27,8 +27,8 @@ module.exports = function (context) {
         'javascript',
         'javascriptreact',
         'typescript',
-        'typescriptreact'
+        'typescriptreact',
     ], {
-        provideHover
+        provideHover,
     }));
 };

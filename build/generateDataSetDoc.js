@@ -18,7 +18,7 @@ const run = async () => {
   // 获取数据
   const dsDocs = {
     [withoutDot]: [],
-    [withDot]: []
+    [withDot]: [],
   }
 
   let currentType = ''
@@ -41,7 +41,7 @@ const run = async () => {
           RulesMap[currentType].tabelCellRlue({
             arr: tableRow.children,
             lastData,
-            currentType
+            currentType,
           })
         }
 
@@ -53,6 +53,7 @@ const run = async () => {
   })
   
   let str = JSON.stringify(dsDocs)
+    // eslint-disable-next-line no-useless-escape
     .replace(/\"(vscode\.CompletionItemKind\.(Property|Variable|Method|Value|Snippet))\"/g,
       ($1, $2) => {
         return $2

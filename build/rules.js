@@ -1,7 +1,7 @@
 const _ = require('lodash')
 
 const typeMapBodyMap = {
-  'boolean': ['true', 'false'],
+  'boolean': [ 'true', 'false' ],
   "DataToJSON": [
     'dirty',
     'selected',
@@ -13,20 +13,18 @@ const typeMapBodyMap = {
     'all-self',
     'normal-self',
   ],
-  'null': ['null']
+  'null': [ 'null' ],
 }
 
 const commonRule = ({ arr, lastData, currentType }) => {
-  lastData.prefix = arr[0].children.map(v => v.value).join('')
+  lastData.prefix = arr[0].children.map((v) => v.value).join('')
   lastData.type = RulesMap[currentType].type
-  lastData.description = `${_.snakeCase(currentType).replace(/_/g, '-')} - ${arr[1].children.map(v => v.value).join('')}`
+  lastData.description = `${_.snakeCase(currentType).replace(/_/g, '-')} - ${arr[1].children.map((v) => v.value).join('')}`
   if (!arr[2]) {
     return
   }
-  let type = arr[2].children.map(v => v.value).join('')
-  lastData.body = [
-    `${lastData.prefix}: \${1}`
-  ]
+  let type = arr[2].children.map((v) => v.value).join('')
+  lastData.body = [ `${lastData.prefix}: \${1}` ]
   lastData.docs = `类型: ${type}`
 }
 
@@ -36,12 +34,12 @@ const tabelCellRule_props = ({ arr, lastData, currentType }) => {
   if (!arr[2]) {
     return
   }
-  let type = arr[2].children.map(v => v.value).join('')
+  let type = arr[2].children.map((v) => v.value).join('')
   if (!arr[3]) {
     return
   }
   // 默认值
-  const defaultValue = arr[3].children.map(v => v.value).join('')
+  const defaultValue = arr[3].children.map((v) => v.value).join('')
 
   lastData.docs = `${lastData.docs}\n\n` +
     `默认值: ` + (defaultValue && `**${defaultValue}**`)
@@ -53,7 +51,7 @@ const tabelCellRule_props = ({ arr, lastData, currentType }) => {
   // 假如有函数 使用函数处理
   // 其他情况 不处理
 
-  const typeStrArr = type.split('|').map(v => _.trim(v))
+  const typeStrArr = type.split('|').map((v) => _.trim(v))
   let typeArr = []
   typeStrArr.forEach((v) => {
     if (typeMapBodyMap[v]) {
@@ -78,34 +76,28 @@ const tabelCellRule_props = ({ arr, lastData, currentType }) => {
       }
     }
 
-    typeArr = [...new Set(typeArr)].filter(v => v !== '')
+    typeArr = [ ...new Set(typeArr) ].filter((v) => v !== '')
     if (typeArr.length === 0) {
-      lastData.body = [
-        `${lastData.prefix}: \${1}`
-      ]
+      lastData.body = [ `${lastData.prefix}: \${1}` ]
     } else if (typeArr.length === 1) {
       typeArr[0] = typeArr[0].replace('$1', '$2')
-      lastData.body = [
-        `${lastData.prefix}: \${1:${typeArr[0]}}`
-      ]
+      lastData.body = [ `${lastData.prefix}: \${1:${typeArr[0]}}` ]
     } else {
-      lastData.body = [
-        `${lastData.prefix}: \${1|${typeArr.join(',')}|}`
-      ]
+      lastData.body = [ `${lastData.prefix}: \${1|${typeArr.join(',')}|}` ]
     }
   })
 
   // 可选值 处理  最高优先级
-  let desc = arr[1].children.map(v => v.value).join('')
+  let desc = arr[1].children.map((v) => v.value).join('')
   if (desc.includes('可选值')) {
     const chooseItem = arr[1].children.filter((item) => {
       return item.type === 'inlineCode'
     })
-      .map((item) => { return item.value });
+      .map((item) => {
+        return item.value
+      });
     if (chooseItem.length > 0) {
-      lastData.body = [
-        `${lastData.prefix}: \${1|${chooseItem.join(',')}}`
-      ]
+      lastData.body = [ `${lastData.prefix}: \${1|${chooseItem.join(',')}}` ]
     }
   }
 
@@ -115,22 +107,18 @@ const tabelCellRule_props = ({ arr, lastData, currentType }) => {
 const tabelCellRule_variable = ({ arr, lastData, currentType }) => {
   // DataSet Values,Record Values,Field Values 所有的values
   commonRule({ arr, lastData, currentType })
-  lastData.body = [
-    `${lastData.prefix}`
-  ]
+  lastData.body = [ `${lastData.prefix}` ]
 }
 
 // 对 method 进行处理
 const tabelCellRule_method = ({ arr, lastData, currentType }) => {
   // DataSet Methods,Record Methods,Field Methods
   commonRule({ arr, lastData, currentType })
-  lastData.docs = `参数: ${arr[2].children.map(v => v.value).join('')}`
+  lastData.docs = `参数: ${arr[2].children.map((v) => v.value).join('')}`
   if (arr[3]) {
-    lastData.docs = `${lastData.docs}\n\n返回值类型: ${arr[3].children.map(v => v.value).join('')}`
+    lastData.docs = `${lastData.docs}\n\n返回值类型: ${arr[3].children.map((v) => v.value).join('')}`
   }
-  lastData.body = [
-    `${lastData.prefix}: \${1}`
-  ]
+  lastData.body = [ `${lastData.prefix}: \${1}` ]
 
   // 针对 vscode.CompletionItemKind.Method 进行特殊处理
   // 对参数进行处理
@@ -139,16 +127,14 @@ const tabelCellRule_method = ({ arr, lastData, currentType }) => {
   const prefix = lastData.prefix.replace(/\((.*)\)/, ($1, $2) => {
     param = _.trim($2) === '' ? '' : $2
       .split(',')
-      .map(v => _.trim(v))
+      .map((v) => _.trim(v))
       .map((v, index) => `\${${index + 1}:${v}}`)
       .join(', ')
     return ''
   })
 
   // 修改 body
-  lastData.body = [
-    `${prefix}(${param})`
-  ]
+  lastData.body = [ `${prefix}(${param})` ]
   lastData.prefix = prefix
 }
 
@@ -168,7 +154,7 @@ const tabelCellRule_feedback = ({ arr, lastData, currentType }) => {
   lastData.body = [
     `${prefix}(( ${param} ) => {`,
     `\t$1`,
-    `})`
+    `})`,
   ]
 }
 
@@ -180,7 +166,7 @@ const tabelCellRule_transport = ({ arr, lastData, currentType }) => {
     `${lastData.prefix}: ({ data, params, dataSet }) => ({`,
     "\turl: '${1}',",
     "\tmethod: '${2}'",
-    "})$0"
+    "})$0",
   ]
 }
 
@@ -190,22 +176,22 @@ const dealWithFunctionType = (str, lastData, f) => {
     return [
       `${lastData.prefix}: ${f} => {`,
       "\t$1",
-      "}"
-    ]
-  } else {
-    return [
-      `${lastData.prefix}: ${f} => {`,
-      `\treturn {$1} `,
-      `}`
+      "}",
     ]
   }
+  return [
+    `${lastData.prefix}: ${f} => {`,
+    `\treturn {$1} `,
+    `}`,
+  ]
+
 }
 
 const tabelCellRule_event = ({ arr, lastData, currentType }) => {
   // DataSet Events
   commonRule({ arr, lastData, currentType })
   // 针对 vscode.CompletionItemKind.Snippet 进行特殊处理
-  let type = arr[2].children.map(v => v.value).join('')
+  let type = arr[2].children.map((v) => v.value).join('')
   let paramDesc = arr[3].children.map((v, index) => {
     if ((index + 1) % 2 === 0 && (index + 1) !== arr[3].children.length) {
       return v.value + '| '
@@ -228,68 +214,68 @@ const RulesMap = {
   "DataSet Props": {
     type: "vscode.CompletionItemKind.Property",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_props
+    tabelCellRlue: tabelCellRule_props,
   },
   'DataSet Values': {
     type: "vscode.CompletionItemKind.Variable",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_variable
+    tabelCellRlue: tabelCellRule_variable,
   },
   'DataSet Methods': {
     type: "vscode.CompletionItemKind.Method",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_method
+    tabelCellRlue: tabelCellRule_method,
   },
   'DataSet Events': {
     type: "vscode.CompletionItemKind.Property",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_event
+    tabelCellRlue: tabelCellRule_event,
   },
   'Record Values': {
     type: "vscode.CompletionItemKind.Value",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_variable
+    tabelCellRlue: tabelCellRule_variable,
   },
   'Record Methods': {
     type: "vscode.CompletionItemKind.Method",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_method
+    tabelCellRlue: tabelCellRule_method,
   },
   'Field Props': {
     type: "vscode.CompletionItemKind.Property",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_props
+    tabelCellRlue: tabelCellRule_props,
   },
   'Field Values': {
     type: "vscode.CompletionItemKind.Value",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_variable
+    tabelCellRlue: tabelCellRule_variable,
   },
   'Field Methods': {
     type: "vscode.CompletionItemKind.Method",
     dot: withDot,
-    tabelCellRlue: tabelCellRule_method
+    tabelCellRlue: tabelCellRule_method,
   },
   'Transport': {
     type: "vscode.CompletionItemKind.Snippet",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_transport
+    tabelCellRlue: tabelCellRule_transport,
   },
   'Feedback': {
     type: "vscode.CompletionItemKind.Property",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_feedback
+    tabelCellRlue: tabelCellRule_feedback,
   },
   'DataToJSON': {
     type: "vscode.CompletionItemKind.Variable",
     dot: withoutDot,
-    tabelCellRlue: tabelCellRule_variable
-  }
+    tabelCellRlue: tabelCellRule_variable,
+  },
 }
 
 
 module.exports = {
   RulesMap,
   withoutDot,
-  withDot
+  withDot,
 }
