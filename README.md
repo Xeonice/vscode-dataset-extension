@@ -10,10 +10,10 @@
 
 ## Features
 
-![screenshot](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/screenshot.gif)
-![c7n-component-autoCompletion](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/c7n-component-autoCompletion.gif)
-![内置文档](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/built-in-document.gif)
-![悬浮提示](https://raw.githubusercontent.com/Xeonice/vscode-dataset-extension/master/images/hover.gif)
+![screenshot](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/screenshot.gif)
+![c7n-component-autoCompletion](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/c7n-component-autoCompletion.gif)
+![内置文档](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/built-in-document.gif)
+![悬浮提示](https://gitee.com/ABoyL/vscode-dataset-extension/raw/master/images/hover.gif)
 
 一套针对 `DataSet` 特殊语法开发的语法补全插件，针对 DataSet 进行一系列的代码补全。
 
@@ -68,7 +68,7 @@
 | `Skeleton`                   | 新建一个 Skeleton                                                    |
 | `Modal.open`                 | Modal.open方法                                                      |
 
-所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/components-pro/data-set-cn/#DataToJSON)
+所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/zh/procmp/dataset/dataset#datatojson)
 
 ### 内置文档
 可以使用**c7n.search**命令快速查看文档,只支持Pro组件。有两种使用方式

@@ -37,7 +37,7 @@ const run = async () => {
         // @ts-ignore
         const newMarkdown = unified().use(getMarkdown).stringify(newTree)
         fileData[item.label] = {
-          hoverDoc: newMarkdown
+          hoverDoc: newMarkdown,
         }
       }
     } catch (error) {

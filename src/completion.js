@@ -3,7 +3,7 @@ const vscode = require('vscode');
 const docs = require('../docs/DataSetDoc');
 
 // get lua keyword list
-function getKeywordsWithDot() {
+function getKeywordsWithDot () {
     const { withDot: copy } = docs;
     return new Promise(function (resolve) {
         resolve(copy.map((item) => item.prefix));
@@ -11,7 +11,7 @@ function getKeywordsWithDot() {
 }
 
 // get xmake command list
-function getKeywordsWithoutDot() {
+function getKeywordsWithoutDot () {
     const { withoutDot: copy } = docs;
     return new Promise(function (resolve) {
         // the default xmake command list
@@ -21,20 +21,20 @@ function getKeywordsWithoutDot() {
     });
 }
 
-function wordContains(word, pattern) {
+function wordContains (word, pattern) {
     return word.indexOf(pattern) > -1;
 }
 
 // insert lua keyword text
-function insertKeyword(word, mode = 'noDot', index) {
+function insertKeyword (word, mode = 'noDot', index) {
     const { withoutDot, withDot } = docs;
     const snippets = {};
-    if(mode.indexOf('dot') !== -1) {
-        withDot.forEach((item, objIndex) => { 
+    if (mode.indexOf('dot') !== -1) {
+        withDot.forEach((item, objIndex) => {
             snippets[`${item.prefix}-${objIndex}`] = item;
         });
     } else {
-        withoutDot.forEach((item, objIndex) => { 
+        withoutDot.forEach((item, objIndex) => {
             snippets[`${item.prefix}-${objIndex}`] = item;
         });
     }
@@ -45,23 +45,25 @@ function insertKeyword(word, mode = 'noDot', index) {
         detail: snippets[`${word}-${index}`].description,
         docs: snippets[`${word}-${index}`].docs || null,
     } : {
-        snippets: word + ' ${1}',
-        detail: null,
-        docs: null,
-    };
+            snippets: word + ' ${1}',
+            detail: null,
+            docs: null,
+        };
 }
 
 // get suggestions
-function getSuggestions(cmdlist, currentWord, kind, insertText, matchPredicate, mode = 'notDot') {
+function getSuggestions (cmdlist, currentWord, kind, insertText, matchPredicate, mode = 'notDot') {
     return new Promise(function (resolve, reject) {
         cmdlist.then(function (stdout) {
             // match suitable commands 
-            let commands = stdout.map((cmd, index) => ({ cmd, index })).filter(function ({ cmd }) { return matchPredicate(cmd, currentWord) });
+            let commands = stdout.map((cmd, index) => ({ cmd, index })).filter(function ({ cmd }) {
+                return matchPredicate(cmd, currentWord)
+            });
             if (commands.length > 0) {
                 // make suggestions from commands
                 let suggestions = commands.map(function ({ cmd, index }) {
                     // make completion item
-                    var item = new vscode.CompletionItem(cmd);
+                    let item = new vscode.CompletionItem(cmd);
                     item.kind = kind;
                     if (insertText == null || insertText == '') {
                         item.insertText = cmd;
@@ -85,59 +87,67 @@ function getSuggestions(cmdlist, currentWord, kind, insertText, matchPredicate, 
 }
 
 // get lua keywords suggestions from the given word
-function getKeywordsWithDotSuggestions(word) {
+function getKeywordsWithDotSuggestions (word) {
     let cmd = getKeywordsWithDot();
     return getSuggestions(cmd, word, vscode.CompletionItemKind.Field, insertKeyword, wordContains, 'dot');
 }
 
 // get xmake commands suggestions from the given word
-function getKeywordsWithoutDotSuggestions(word) {
+function getKeywordsWithoutDotSuggestions (word) {
     let cmd = getKeywordsWithoutDot();
     return getSuggestions(cmd, word, vscode.CompletionItemKind.Function, insertKeyword, wordContains);
 }
 
-function provideCompletionItems(document, position, token, mode = '') {
+function provideCompletionItems (document, position, token, mode = '') {
 
     // get the current word
     let wordAtPosition = document.getWordRangeAtPosition(position);
-    var currentWord = '';
+    let currentWord = '';
     if (wordAtPosition && wordAtPosition.start.character < position.character) {
-        var word = document.getText(wordAtPosition);
+        let word = document.getText(wordAtPosition);
         currentWord = word.substr(0, position.character - wordAtPosition.start.character);
     }
 
     // get suggestion results
-    if(currentWord.indexOf(mode)) {
+    if (currentWord.indexOf(mode)) {
         return new Promise(function (resolve, reject) {
             getKeywordsWithDotSuggestions(currentWord).then(function (results) {
-                var suggestions = Array.prototype.concat.apply([], results);
+                let suggestions = Array.prototype.concat.apply([], results);
                 resolve(suggestions);
-            }).catch(err => { reject(err)})
+            }).catch((err) => {
+                reject(err)
+            })
         })
     }
     return new Promise(function (resolve, reject) {
         getKeywordsWithoutDotSuggestions(currentWord).then(function (results) {
-            var suggestions = Array.prototype.concat.apply([], results);
+            let suggestions = Array.prototype.concat.apply([], results);
             resolve(suggestions);
-        }).catch(err => { reject(err); });
+        }).catch((err) => {
+            reject(err);
+        });
     });
 }
 // resolve completion item
 // eslint-disable-next-line no-unused-vars
-function resolveCompletionItem(item, token) {
+function resolveCompletionItem (item, token) {
     return null;
 }
 
-module.exports = function(context) {
+module.exports = function (context) {
     // 注册鼠标悬停提示
     context.subscriptions.push(
-        vscode.languages.registerCompletionItemProvider(['javascript', 'javascriptreact', 'typescript', 'typescriptreact'], {
+        vscode.languages.registerCompletionItemProvider([
+            'javascript', 'javascriptreact', 'typescript', 'typescriptreact',
+        ], {
             provideCompletionItems: (document, position, token) => provideCompletionItems(document, position, token),
-            resolveCompletionItem
+            resolveCompletionItem,
         }),
-        vscode.languages.registerCompletionItemProvider(['javascript', 'javascriptreact', 'typescript', 'typescriptreact'], {
+        vscode.languages.registerCompletionItemProvider([
+            'javascript', 'javascriptreact', 'typescript', 'typescriptreact',
+        ], {
             provideCompletionItems: (document, position, token) => provideCompletionItems(document, position, token, '.'),
-            resolveCompletionItem
+            resolveCompletionItem,
         }, '.'),
     );
 };
