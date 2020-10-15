@@ -4,6 +4,9 @@ All notable changes to the "c7n-dataset-plugin" extension will be documented in 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.16]
+- 修复因为仓库地址修改导致部分链接404的问题
+
 ## [0.1.12]
 - 修复部分文档问题
 

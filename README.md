@@ -68,7 +68,7 @@
 | `Skeleton`                   | 新建一个 Skeleton                                                    |
 | `Modal.open`                 | Modal.open方法                                                      |
 
-所有属性均与文档一致[Choerodon-ui DataSet](https://choerodon.github.io/choerodon-ui/zh/procmp/dataset/dataset#datatojson)
+所有属性均与文档一致[Choerodon-ui DataSet](https://open-hand.github.io/choerodon-ui/zh/procmp/dataset/dataset#api)
 
 ### 内置文档
 可以使用**c7n.search**命令快速查看文档,只支持Pro组件。有两种使用方式
