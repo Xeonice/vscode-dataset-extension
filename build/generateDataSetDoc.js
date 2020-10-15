@@ -7,7 +7,7 @@ const axios = require('axios')
 const { withDot, withoutDot, RulesMap } = require('./rules')
 
 const outFile = '../docs/DataSetDoc.js'
-const dataSetUrl = 'https://raw.githubusercontent.com/AboyL/choerodon-ui/master/components-pro/data-set/index.zh-CN.md'
+const dataSetUrl = 'https://raw.githubusercontent.com/open-hand/choerodon-ui/master/components-pro/data-set/index.zh-CN.md'
 
 const run = async () => {
   // const data = fs.readFileSync('./index.zh-CN.md', {

@@ -1,7 +1,7 @@
 const vscode = require('vscode')
 const components = require('../utils/components')
 const { htmlTemplate } = require('./utils')
-const url = `https://choerodon.github.io/choerodon-ui/zh/procmp/`
+const url = `https://open-hand.github.io/choerodon-ui/zh/procmp/`
 
 const openSite = (comp) => {
   const panel = vscode.window.createWebviewPanel(
