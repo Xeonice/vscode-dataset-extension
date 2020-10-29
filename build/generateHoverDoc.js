@@ -10,7 +10,7 @@ const unified = require('unified')
 const axios = require('axios')
 const _ = require('lodash')
 
-const baseUrl = `https://raw.githubusercontent.com/choerodon/choerodon-ui/master/components-pro/`
+const baseUrl = `https://raw.githubusercontent.com/open-hand/choerodon-ui/master/components-pro/`
 
 const run = async () => {
   const fileData = {}
