@@ -82,7 +82,7 @@
 		"fs-extra": "^9.0.1",
 		"glob": "^7.1.6",
 		"js-beautify": "^1.11.0",
-		"mocha": "^7.1.2",
+		"mocha": "^10.2.0",
 		"remark-parse": "^8.0.2",
 		"remark-stringify": "^8.1.0",
 		"typescript": "^3.8.3",
